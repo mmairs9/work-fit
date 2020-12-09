@@ -1,33 +1,16 @@
 import * as React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import { Text, View } from '../components/Themed';
 import Colors from "../constants/Colors";
-import Leaderboard from 'react-native-leaderboard';
-import leaderBoardData from '../services/data/leaderboard.json'
-import { groupBy } from 'lodash'
+
+import LeaderBoardList from "../components/LeaderBoardList";
 
 
 export default function LeaderBoardScreen({navigation}) {
-    const leaderboard = groupBy(leaderBoardData,'userName')
-
-    const data1 = Object.keys(leaderboard).map(key=> {
-        return {userName: key, highScore: leaderboard[key].length, data: leaderboard[key]}
-    })
-    const navigateToUserActivity = (activity, index) => {
-        navigation.navigate('UserActivityScreen', {userActivities:activity})
-    }
-
     return (
         <View style={styles.container}>
-            <ScrollView>
-                <Text style={styles.title}>Leader Board</Text>
-
-                <Leaderboard
-                    data={data1}
-                    onRowPress={navigateToUserActivity}
-                    sortBy='highScore'
-                    labelBy='userName'/>
-            </ScrollView>
+            <Text style={styles.title}>KeepUp</Text>
+            <LeaderBoardList navigation={navigation}/>
         </View>
     );
 }
@@ -35,7 +18,7 @@ export default function LeaderBoardScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.light.background,
+        backgroundColor: Colors.light.tint,
         alignItems: 'center',
         paddingTop: 30,
         marginBottom: 100,
@@ -46,7 +29,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         fontSize: 26,
         textAlign: 'center',
-        color: Colors.light.text,
+        color: 'white',
         fontWeight: 'bold',
     },
     separator: {

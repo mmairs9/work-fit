@@ -1,5 +1,4 @@
 export default () => {
-    console.log('getting workouts')
     const requestOptions = {
         method: 'GET',
         redirect: 'follow'

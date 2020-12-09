@@ -30,6 +30,4 @@ export default (activity) => {
 
     return fetch("https://i4qd1pw4ec.execute-api.us-east-1.amazonaws.com/default/KeepUp2/workout", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
 }
