@@ -77,7 +77,9 @@ export default function MyDailyActivity({ path }: { path: string }) {
   useEffect(() => {
 
     // initAppleHealth()
-    getWorkouts().then(data => setMyWorkOuts(data.Items))
+    getWorkouts().then(data => {
+      setMyWorkOuts(data.Items.filter(workout => workout.pk === 'gus-id'))
+    })
   }, []);
 
 
