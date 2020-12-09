@@ -9,6 +9,7 @@ import {FontAwesome as Icon, Ionicons} from "@expo/vector-icons";
 import { TabBarAdvancedButton } from "../components/TabBarAdvancedButton";
 import { IS_IPHONE_X } from "../utils";
 import Colors from "../constants/Colors";
+import { NavigationState } from '@react-navigation';
 import MyActivityScreen from "../screens/MyActivityScreen";
 import LeaderBoardScreen from "../screens/LeaderBoardScreen";
 import AddActivityScreen from "../screens/AddActivityScreen";
@@ -25,7 +26,17 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 const LeaderBoardStack = createStackNavigator();
 
-function LeaderBoardNavigator() {
+const getActiveRouteState = function (route: NavigationState): NavigationState {
+    if (!route.routes || route.routes.length === 0 || route.index >= route.routes.length) {
+        return route;
+    }
+
+    const childActiveRoute = route.routes[route.index] as NavigationState;
+    return getActiveRouteState(childActiveRoute);
+}
+
+function LeaderBoardNavigator(props) {
+    console.log(props)
     return (
         <LeaderBoardStack.Navigator>
             <LeaderBoardStack.Screen
@@ -36,7 +47,7 @@ function LeaderBoardNavigator() {
             <LeaderBoardStack.Screen
                 name="UserActivityScreen"
                 component={UserActivityScreen}
-                options={{ headerTitle: 'User Activity', headerShown: true }}
+                options={{ headerTitle: 'User Activity', headerShown: false }}
             />
         </LeaderBoardStack.Navigator>
     );

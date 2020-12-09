@@ -12,6 +12,9 @@ import {FontAwesome5, Ionicons} from "@expo/vector-icons";
 import moment from "moment";
 import AppleHealthKit from 'react-native-health';
 import getWorkouts from '../services/getWorkouts'
+import ActivityLog from "./ActivitesLog";
+
+
 
 
 export default function MyDailyActivity({ path }: { path: string }) {
@@ -102,48 +105,50 @@ export default function MyDailyActivity({ path }: { path: string }) {
     return <Text>Loading Workouts</Text>
   }
   return (
-    <View  style={styles.container}>
-       <Text style={styles.dailyGoals}>My Daily Activity</Text>
+    <View style={styles.container}>
+      <Text style={styles.dailyGoals}>My Daily Activity</Text>
       <View style={styles.dailyStepsContainer}>
-           <Text style={{position: 'absolute', top: 100, zIndex: 99, color: 'black'}}>Step Count {myWorkOuts[0].stepCount}</Text>
-        <FontAwesome5 style={{position: 'absolute', top: 150, zIndex: 99, color: 'black'}} name="running" size={50} color="white" />
-          <ProgressChart
-              data={{
-                  labels: 'Last Step Count', // optional
-                  data: [myWorkOuts[0].stepCount / 1000]
-                }}
-              height={300}
-              width={Dimensions.get("window").width-30} // from react-native
-              strokeWidth={16}
-              radius={100}
-              style={{
-                marginVertical: 8,
-                borderRadius: 16
-              }}
-              chartConfig={{
-                backgroundGradientFrom: Colors.light.secondary,
-                backgroundGradientTo: Colors.light.secondary,
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(114, 101, 226, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(114, 101, 226, ${opacity})`,
-                style: {
-                  borderRadius: 50
+        <Text style={{position: 'absolute', top: 100, zIndex: 99, color: 'black'}}>Step
+          Count {myWorkOuts[0].stepCount}</Text>
+        <FontAwesome5 style={{position: 'absolute', top: 150, zIndex: 99, color: 'black'}} name="running" size={50}
+                      color="white"/>
+        <ProgressChart
+            data={{
+              labels: 'Last Step Count', // optional
+              data: [myWorkOuts[0].stepCount / 1000]
+            }}
+            height={300}
+            width={Dimensions.get("window").width - 30} // from react-native
+            strokeWidth={16}
+            radius={100}
+            style={{
+              marginVertical: 8,
+              borderRadius: 16
+            }}
+            chartConfig={{
+              backgroundGradientFrom: Colors.light.secondary,
+              backgroundGradientTo: Colors.light.secondary,
+              decimalPlaces: 2, // optional, defaults to 2dp
+              color: (opacity = 1) => `rgba(114, 101, 226, ${opacity})`,
+              labelColor: (opacity = 1) => `rgba(114, 101, 226, ${opacity})`,
+              style: {
+                borderRadius: 50
 
-                },
-                propsForDots: {
-                  r: "6",
-                  strokeWidth: "2",
-                  stroke: "#ffa726"
-                }
-              }}
-              hideLegend={true}
-          />
+              },
+              propsForDots: {
+                r: "6",
+                strokeWidth: "2",
+                stroke: "#ffa726"
+              }
+            }}
+            hideLegend={true}
+        />
       </View>
       <View style={styles.dailyStepsContainer}>
         <LineChart
             data={activityLineChartData}
             height={220}
-            width={Dimensions.get("window").width-30} // from react-native
+            width={Dimensions.get("window").width - 30} // from react-native
             strokeWidth={16}
             style={{
               marginVertical: 8,
@@ -167,37 +172,7 @@ export default function MyDailyActivity({ path }: { path: string }) {
             }}
         />
       </View>
-      <View style={{backgroundColor: '#F3F6FA'}}>
-          <View style={styles.separator} />
-        <Text style={styles.dailyGoals}>Logged Activities</Text>
-        <FlatList
-
-            data={myWorkOuts}
-            renderItem={({ item }) =>
-                <View style={styles.activity}>
-                  <View style={[styles.row,{marginLeft: -10, borderBottomWidth: 1, borderRadius: 10, marginRight:-10, borderBottomColor: '#eaeaea'}]}>
-                    <Text style={[styles.item, {color: Colors.light.tint, marginLeft: 0}]}>{`${moment(item.startDate).format('D')}/${moment(item.startDate).format('M')} -`}</Text>
-                    <Text style={[styles.item, {color: Colors.light.text,marginLeft: -15, fontWeight: 'bold'}]}>{item.type}</Text>
-                  </View>
-                  <View style={[styles.row,{justifyContent: 'space-between'}]}>
-                  <View style={styles.row}>
-                  <Ionicons name="ios-time" size={24} style={[styles.icon, {color:'#999999'}]} />
-                    <Text style={styles.item}>{item.duration} Mins</Text>
-                  </View>
-
-                    <View style={styles.row}>
-                      <FontAwesome5 name="walking"  size={24} style={[styles.icon, {color:Colors.light.tint}]} />
-                      <Text style={styles.item}> {item.stepCount} </Text>
-                    </View>
-                  <View style={styles.row}>
-                    <FontAwesome5 name="burn"  size={24} style={[styles.icon, {color:Colors.light.tertiaryColor}]} />
-                    <Text style={styles.item}>{item.calories} </Text>
-                  </View>
-                  </View>
-                </View>
-            }
-        />
-      </View>
+      <ActivityLog activities={myWorkOuts}/>
     </View>
   );
 }

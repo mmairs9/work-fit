@@ -9,7 +9,7 @@ export default (activity) => {
         .toISOString()
 
     const body = {
-        userId: "343423123123",
+        userId: "gus-id",
         userName: "gus granbery",
         duration: activity.duration,
         type: activity.type,

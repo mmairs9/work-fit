@@ -11,10 +11,10 @@ export default function LeaderBoardScreen({navigation}) {
     const leaderboard = groupBy(leaderBoardData,'userName')
 
     const data1 = Object.keys(leaderboard).map(key=> {
-        return {userName: key, highScore: leaderboard[key].length}
+        return {userName: key, highScore: leaderboard[key].length, data: leaderboard[key]}
     })
-    const navigateToUserActivity = (item, index) => {
-        navigation.navigate('UserActivityScreen', item)
+    const navigateToUserActivity = (activity, index) => {
+        navigation.navigate('UserActivityScreen', {userActivities:activity})
     }
 
     return (
