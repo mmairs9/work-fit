@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, {useEffect, useRef, useState} from 'react';
-import {Dimensions, FlatList, NativeAppEventEmitter, StyleSheet} from 'react-native';
+import {Button, Dimensions, FlatList, NativeAppEventEmitter, StyleSheet} from 'react-native';
 import { Text, View } from './Themed';
 import {
   LineChart,
@@ -13,12 +13,15 @@ import moment from "moment";
 import AppleHealthKit from 'react-native-health';
 import getWorkouts from '../services/getWorkouts'
 import ActivityLog from "./ActivitesLog";
+import Modal from 'react-native-modal';
+import MyGoals from "./MyGoals";
 
 
 
 
 export default function MyDailyActivity({ path }: { path: string }) {
   const [myWorkOuts, setMyWorkOuts] = useState()
+  const [isModalVisible, setIsModalVisible] = useState(true)
   const healthSubscriber = useRef()
   const PERMS = AppleHealthKit.Constants.Permissions;
   let options = {
@@ -107,6 +110,11 @@ export default function MyDailyActivity({ path }: { path: string }) {
   return (
     <View style={styles.container}>
       <Text style={styles.dailyGoals}>My Daily Activity</Text>
+      <Modal isVisible={isModalVisible}>
+        <View style={{flex: 1, borderRadius: 20, marginVertical: 100}}>
+         <MyGoals closeModal={()=>setIsModalVisible(false)}/>
+        </View>
+      </Modal>
       <View style={styles.dailyStepsContainer}>
         <Text style={{position: 'absolute', top: 100, zIndex: 99, color: 'black'}}>Step
           Count {myWorkOuts[0].stepCount}</Text>
