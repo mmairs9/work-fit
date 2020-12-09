@@ -12,6 +12,8 @@ import Colors from "../constants/Colors";
 import MyActivityScreen from "../screens/MyActivityScreen";
 import LeaderBoardScreen from "../screens/LeaderBoardScreen";
 import AddActivityScreen from "../screens/AddActivityScreen";
+import UserActivityScreen from "../screens/UserActivityScreen";
+import {createStackNavigator} from "@react-navigation/stack";
 const BottomBar = createBottomTabNavigator();
 
 type Props = {
@@ -19,6 +21,25 @@ type Props = {
 };
 function TabBarIcon(props: { name: string; color: string }) {
     return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+}
+
+const LeaderBoardStack = createStackNavigator();
+
+function LeaderBoardNavigator() {
+    return (
+        <LeaderBoardStack.Navigator>
+            <LeaderBoardStack.Screen
+                name="LeaderBoardScreen"
+                component={LeaderBoardScreen}
+                options={{ headerTitle: 'Back', headerShown: false }}
+            />
+            <LeaderBoardStack.Screen
+                name="UserActivityScreen"
+                component={UserActivityScreen}
+                options={{ headerTitle: 'User Activity', headerShown: true }}
+            />
+        </LeaderBoardStack.Navigator>
+    );
 }
 
 export const TabBar: React.FC<Props> = ({ barColor }) => (
@@ -72,7 +93,7 @@ export const TabBar: React.FC<Props> = ({ barColor }) => (
             />
             <BottomBar.Screen
                 name="Leader board"
-                component={LeaderBoardScreen}
+                component={LeaderBoardNavigator}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="ios-trophy" size={24} color={color} />
