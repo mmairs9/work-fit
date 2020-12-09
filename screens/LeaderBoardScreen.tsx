@@ -7,12 +7,15 @@ import leaderBoardData from '../services/data/leaderboard.json'
 import { groupBy } from 'lodash'
 
 
-export default function LeaderBoardScreen() {
+export default function LeaderBoardScreen({navigation}) {
     const leaderboard = groupBy(leaderBoardData,'userName')
 
     const data1 = Object.keys(leaderboard).map(key=> {
         return {userName: key, highScore: leaderboard[key].length}
     })
+    const navigateToUserActivity = (item, index) => {
+        navigation.navigate('UserActivityScreen', item)
+    }
 
     return (
         <View style={styles.container}>
@@ -21,6 +24,7 @@ export default function LeaderBoardScreen() {
 
                 <Leaderboard
                     data={data1}
+                    onRowPress={navigateToUserActivity}
                     sortBy='highScore'
                     labelBy='userName'/>
             </ScrollView>
