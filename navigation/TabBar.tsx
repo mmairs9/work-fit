@@ -40,6 +40,7 @@ export const TabBar: React.FC<Props> = ({ barColor }) => (
                 </View>
             )}
             tabBarOptions={{
+                activeTintColor: Colors.light.tint,
                 activebackgroundColor: Colors.light.background,
                 showIcon: true,
                 style: styles.navigator,
@@ -49,12 +50,15 @@ export const TabBar: React.FC<Props> = ({ barColor }) => (
             }}
         >
             <BottomBar.Screen
-                name="My Goals"
+                name="My Activity"
                 component={MyActivityScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-speedometer" size={24} color={Colors.light.tint} />
+                        <TabBarIcon name="ios-speedometer" size={24} color={color} />
                     ),
+                    tabStyle: {
+                        color: 'red',
+                    }
                 }}
             />
             <BottomBar.Screen
@@ -71,7 +75,7 @@ export const TabBar: React.FC<Props> = ({ barColor }) => (
                 component={LeaderBoardScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-trophy" size={24} color={Colors.light.tint} />
+                        <TabBarIcon name="ios-trophy" size={24} color={color} />
                     ),
                 }}
             />
