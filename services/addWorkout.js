@@ -1,16 +1,25 @@
-export default () => {
+import moment from 'moment'
+
+export default (activity) => {
+    // {"calories": "200", "duration": "40", "steps": "2000", "type": "Spin"}
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "text/plain");
+    const startDate = moment()
+        .utc(true)
+        .toISOString()
 
     const body = {
         userId: "343423123123",
         userName: "gus granbery",
-        duration: 120,
-        type: "run",
-        calories: 300,
-        stepCount: 22,
-        startDate: "2020-12-07T19:20:30+01:00"
+        duration: activity.duration,
+        type: activity.type,
+        calories: activity.calories,
+        stepCount: activity.steps,
+        startDate,
+        resourceType: 'activity'
     };
+
+    console.log('body', body)
 
     const requestOptions = {
         method: 'POST',

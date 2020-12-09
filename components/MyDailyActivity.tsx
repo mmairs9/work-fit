@@ -6,16 +6,16 @@ import {
   LineChart,
   ProgressChart,
 } from "react-native-chart-kit";
-import workouts from '../services/data/myWorkouts.json'
 import Colors from '../constants/Colors';
-import { groupBy} from 'lodash'
+import { groupBy } from 'lodash'
 import {FontAwesome5, Ionicons} from "@expo/vector-icons";
 import moment from "moment";
 import AppleHealthKit from 'react-native-health';
+import getWorkouts from '../services/getWorkouts'
 
 
 export default function MyDailyActivity({ path }: { path: string }) {
-  const [myWorkOuts, setMyWorkOuts] = useState(workouts)
+  const [myWorkOuts, setMyWorkOuts] = useState()
   const healthSubscriber = useRef()
   const PERMS = AppleHealthKit.Constants.Permissions;
   let options = {
@@ -75,11 +75,10 @@ export default function MyDailyActivity({ path }: { path: string }) {
 
 
   useEffect(() => {
-    //replace with fetch for data
-    initAppleHealth()
-    setMyWorkOuts(workouts)
-  }, [workouts]);
 
+    // initAppleHealth()
+    getWorkouts().then(data => setMyWorkOuts(data.Items))
+  }, []);
 
 
   const group = groupBy(myWorkOuts, function (workout) {
@@ -97,7 +96,9 @@ export default function MyDailyActivity({ path }: { path: string }) {
     legend: ["Daily Workouts"] // optional
   };
 
-
+  if (!myWorkOuts) {
+    return <Text>Loading Workouts</Text>
+  }
   return (
     <View  style={styles.container}>
        <Text style={styles.dailyGoals}>My Daily Activity</Text>

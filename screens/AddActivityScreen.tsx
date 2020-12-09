@@ -18,7 +18,7 @@ export default function AddActivityScreen() {
         "Workout logged. Time to fuel up!"
     ]
 
-    const [activtity, setActivity] = useState({
+    const [activity, setActivity] = useState({
       type: '',
       calories: '',
       steps: '',
@@ -30,8 +30,9 @@ export default function AddActivityScreen() {
     }, [visible]);
 
     const onSubmit = () => {
-        console.log('activity', activtity)
-        addWorkout()
+        console.log('activity', activity)
+        // {"calories": "200", "duration": "40", "steps": "2000", "type": "Spin"}
+        addWorkout(activity)
         //submit date to api
         toggleAlert()
     }
@@ -66,29 +67,29 @@ export default function AddActivityScreen() {
           <TextInput
               style={styles.input}
               placeholder="Type of Activity"
-              onChangeText={text => setActivity({ ...activtity, type: text })}
-              value={activtity.type}
+              onChangeText={text => setActivity({ ...activity, type: text })}
+              value={activity.type}
           />
           <TextInput
               style={styles.input}
               keyboardType="numeric"
               placeholder="Duration (minutes)"
-              onChangeText={text => setActivity({ ...activtity, duration: text })}
-              value={activtity.duration}
+              onChangeText={text => setActivity({ ...activity, duration: text })}
+              value={activity.duration}
           />
           <TextInput
               style={styles.input}
               keyboardType="numeric"
               placeholder="Steps"
-              onChangeText={text => setActivity({ ...activtity, steps: text })}
-              value={activtity.steps}
+              onChangeText={text => setActivity({ ...activity, steps: text })}
+              value={activity.steps}
           />
           <TextInput
               style={styles.input}
               keyboardType="numeric"
               placeholder="Calories Burned"
-              onChangeText={text => setActivity({ ...activtity, calories: text })}
-              value={activtity.calories}
+              onChangeText={text => setActivity({ ...activity, calories: text })}
+              value={activity.calories}
           />
           <TouchableOpacity onPress={onSubmit} style={styles.appButtonContainer}>
               <Text style={styles.appButtonText}>Submit Activity</Text>
