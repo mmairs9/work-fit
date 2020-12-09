@@ -6,6 +6,7 @@ import {FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 import { useState} from "react";
 import { sample } from 'lodash'
+import addWorkout from '../services/addWorkout'
 
 export default function AddActivityScreen() {
     const [visible, setVisible] = useState(false);
@@ -29,7 +30,8 @@ export default function AddActivityScreen() {
     }, [visible]);
 
     const onSubmit = () => {
-        console.log(activtity)
+        console.log('activity', activtity)
+        addWorkout()
         //submit date to api
         toggleAlert()
     }
