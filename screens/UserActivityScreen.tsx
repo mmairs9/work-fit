@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingTop: 50,
     paddingLeft: 10,
+    paddingBottom: 10,
     flexDirection: "row"
   },
   title: {
