@@ -1072,6 +1072,29 @@
   resolved "https://repo.forge.lmig.com/api/npm/npm/@expo/config-types/-/config-types-40.0.0-beta.1.tgz#4192b120edc9ec235147329a50bd0a7da16ae89c"
   integrity sha1-QZKxIO3J7CNRRzKaUL0KfaFq6Jw=
 
+"@expo/config-types@^40.0.0-beta.2":
+  version "40.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-40.0.0-beta.2.tgz#4fea4ef5654d02218b02b0b3772529a9ce5b0471"
+  integrity sha512-t9pHCQMXOP4nwd7LGXuHkLlFy0JdfknRSCAeVF4Kw2/y+5OBbR9hW9ZVnetpBf0kORrekgiI7K/qDaa3hh5+Qg==
+
+"@expo/config@3.3.20":
+  version "3.3.20"
+  resolved "https://registry.yarnpkg.com/@expo/config/-/config-3.3.20.tgz#115e20f437e4c2c3dccc6ef0f011c59859259f49"
+  integrity sha512-+h2RyesZLzwQhbvBSwwdpmrkGEtPXL3uC5uJpaS3SIDtjmS9u8hVSjP+s8g/QwWZd2JdGlmIhWbkePRyseZ6cA==
+  dependencies:
+    "@babel/core" "7.9.0"
+    "@expo/babel-preset-cli" "0.2.18"
+    "@expo/config-types" "^40.0.0-beta.2"
+    "@expo/json-file" "8.2.25"
+    find-up "^5.0.0"
+    fs-extra "9.0.0"
+    getenv "0.7.0"
+    glob "7.1.6"
+    require-from-string "^2.0.2"
+    resolve-from "^5.0.0"
+    semver "^7.1.3"
+    slugify "^1.3.4"
+
 "@expo/config@^3.2.3":
   version "3.3.18"
   resolved "https://repo.forge.lmig.com/api/npm/npm/@expo/config/-/config-3.3.18.tgz#5e685ba35469deacd41caa6827a94828ee1c8fcb"
@@ -1116,6 +1139,14 @@
     json5 "^1.0.1"
     lodash "^4.17.15"
     write-file-atomic "^2.3.0"
+
+"@expo/metro-config@^0.1.16":
+  version "0.1.45"
+  resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-0.1.45.tgz#43f83a021dc706f092544899ae599754324d7320"
+  integrity sha512-q2dR3YbX5W4IVSGAEobspNHPOKxppKXUocXz9Csc1irPKpO4h4hvzybDUx9Scj0QNnkFQnyVbwRiPCG8aIcYvA==
+  dependencies:
+    "@expo/config" "3.3.20"
+    metro-react-native-babel-transformer "^0.58.0"
 
 "@expo/vector-icons@^10.0.0", "@expo/vector-icons@^10.0.2":
   version "10.2.1"
@@ -1203,10 +1234,10 @@
     jest-util "^25.5.0"
     slash "^3.0.0"
 
-"@jest/core@^25.5.4":
+"@jest/core@^25.2.7", "@jest/core@^25.5.4":
   version "25.5.4"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/@jest/core/-/core-25.5.4.tgz#3ef7412f7339210f003cdf36646bbca786efe7b4"
-  integrity sha1-PvdBL3M5IQ8APN82ZGu8p4bv57Q=
+  resolved "https://registry.yarnpkg.com/@jest/core/-/core-25.5.4.tgz#3ef7412f7339210f003cdf36646bbca786efe7b4"
+  integrity sha512-3uSo7laYxF00Dg/DMgbn4xMJKmDdWvZnf89n8Xj/5/AeQ2dOQmn6b6Hkj/MleyzZWXpwv+WSdYWl4cLsy2JsoA==
   dependencies:
     "@jest/console" "^25.5.0"
     "@jest/reporters" "^25.5.1"
@@ -1355,10 +1386,10 @@
     jest-runner "^25.5.4"
     jest-runtime "^25.5.4"
 
-"@jest/transform@^25.5.1":
+"@jest/transform@^25.2.6", "@jest/transform@^25.5.1":
   version "25.5.1"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/@jest/transform/-/transform-25.5.1.tgz#0469ddc17699dd2bf985db55fa0fb9309f5c2db3"
-  integrity sha1-BGndwXaZ3Sv5hdtV+g+5MJ9cLbM=
+  resolved "https://registry.yarnpkg.com/@jest/transform/-/transform-25.5.1.tgz#0469ddc17699dd2bf985db55fa0fb9309f5c2db3"
+  integrity sha512-Y8CEoVwXb4QwA6Y/9uDkn0Xfz0finGkieuV0xkdF9UtZGJeLukD5nLkaVrVsODB1ojRWlaoD0AJZpVHCSnJEvg==
   dependencies:
     "@babel/core" "^7.1.0"
     "@jest/types" "^25.5.0"
@@ -1386,7 +1417,7 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@jest/types@^25.5.0":
+"@jest/types@^25.2.6", "@jest/types@^25.5.0":
   version "25.5.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/@jest/types/-/types-25.5.0.tgz#4d6a4793f7b9599fc3680877b856a97dbccf2a9d"
   integrity sha1-TWpHk/e5WZ/DaAh3uFapfbzPKp0=
@@ -1414,7 +1445,7 @@
     hermes-profile-transformer "^0.0.6"
     ip "^1.1.5"
 
-"@react-native-community/cli-platform-android@^4.10.0", "@react-native-community/cli-platform-android@^4.13.0", "@react-native-community/cli-platform-android@^4.7.0":
+"@react-native-community/cli-platform-android@^4.10.0", "@react-native-community/cli-platform-android@^4.13.0":
   version "4.13.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/@react-native-community/cli-platform-android/-/cli-platform-android-4.13.0.tgz#922681ec82ee1aadd993598b814df1152118be02"
   integrity sha1-kiaB7ILuGq3Zk1mLgU3xFSEYvgI=
@@ -1430,7 +1461,7 @@
     slash "^3.0.0"
     xmldoc "^1.1.2"
 
-"@react-native-community/cli-platform-ios@^4.10.0", "@react-native-community/cli-platform-ios@^4.7.0":
+"@react-native-community/cli-platform-ios@^4.10.0":
   version "4.13.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/@react-native-community/cli-platform-ios/-/cli-platform-ios-4.13.0.tgz#a738915c68cac86df54e578b59a1311ea62b1aef"
   integrity sha1-pziRXGjKyG31TleLWaExHqYrGu8=
@@ -1475,10 +1506,10 @@
   resolved "https://repo.forge.lmig.com/api/npm/npm/@react-native-community/cli-types/-/cli-types-4.10.1.tgz#d68a2dcd1649d3b3774823c64e5e9ce55bfbe1c9"
   integrity sha1-1ootzRZJ07N3SCPGTl6c5Vv74ck=
 
-"@react-native-community/cli@^4.7.0":
+"@react-native-community/cli@^4.10.0":
   version "4.13.1"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/@react-native-community/cli/-/cli-4.13.1.tgz#60148723e77cafe3ae260317d6bffe91853a2d20"
-  integrity sha1-YBSHI+d8r+OuJgMX1r/+kYU6LSA=
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-4.13.1.tgz#60148723e77cafe3ae260317d6bffe91853a2d20"
+  integrity sha512-+/TeRVToADpQPSprsPkwi9KY8x64YcuJpjzMBVISwWP+aWzsIDuWJmyMXTADlCg2EBMJqJR7bn1W/IkfzVRCWA==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@react-native-community/cli-debugger-ui" "^4.13.1"
@@ -1571,10 +1602,10 @@
   dependencies:
     type-detect "4.0.8"
 
-"@types/babel__core@^7.1.7":
+"@types/babel__core@^7.1.0", "@types/babel__core@^7.1.7":
   version "7.1.12"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/@types/babel__core/-/babel__core-7.1.12.tgz#4d8e9e51eb265552a7e4f1ff2219ab6133bdfb2d"
-  integrity sha1-TY6eUesmVVKn5PH/IhmrYTO9+y0=
+  resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.12.tgz#4d8e9e51eb265552a7e4f1ff2219ab6133bdfb2d"
+  integrity sha512-wMTHiiTiBAAPebqaPiPDLFA4LYPKr6Ph0Xq/6rq1Ur3v66HXyG+clfR9CNETkD7MQS8ZHvpQOtA53DLws5WAEQ==
   dependencies:
     "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
@@ -1703,7 +1734,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@unimodules/core@~5.5.1":
+"@unimodules/core@~5.5.0", "@unimodules/core@~5.5.1":
   version "5.5.1"
   resolved "https://repo.forge.lmig.com/api/npm/npm/@unimodules/core/-/core-5.5.1.tgz#82afe960568c58da62c76ea45ca77aa43a31ce13"
   integrity sha1-gq/pYFaMWNpix26kXKd6pDoxzhM=
@@ -2040,6 +2071,19 @@ babel-jest@^25.2.0, babel-jest@^25.5.1:
     graceful-fs "^4.2.4"
     slash "^3.0.0"
 
+babel-jest@~25.2.6:
+  version "25.2.6"
+  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-25.2.6.tgz#fe67ff4d0db3626ca8082da8881dd5e84e07ae75"
+  integrity sha512-MDJOAlwtIeIQiGshyX0d2PxTbV73xZMpNji40ivVTPQOm59OdRR9nYCkffqI7ugtsK4JR98HgNKbDbuVf4k5QQ==
+  dependencies:
+    "@jest/transform" "^25.2.6"
+    "@jest/types" "^25.2.6"
+    "@types/babel__core" "^7.1.0"
+    babel-plugin-istanbul "^6.0.0"
+    babel-preset-jest "^25.2.6"
+    chalk "^3.0.0"
+    slash "^3.0.0"
+
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
   resolved "https://repo.forge.lmig.com/api/npm/npm/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.3.3.tgz#84fda19c976ec5c6defef57f9427b3def66e17a3"
@@ -2149,10 +2193,10 @@ babel-preset-fbjs@^3.2.0, babel-preset-fbjs@^3.3.0:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-jest@^25.5.0:
+babel-preset-jest@^25.2.6, babel-preset-jest@^25.5.0:
   version "25.5.0"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/babel-preset-jest/-/babel-preset-jest-25.5.0.tgz#c1d7f191829487a907764c65307faa0e66590b49"
-  integrity sha1-wdfxkYKUh6kHdkxlMH+qDmZZC0k=
+  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-25.5.0.tgz#c1d7f191829487a907764c65307faa0e66590b49"
+  integrity sha512-8ZczygctQkBU+63DtSOKGh7tFL0CeCuz+1ieud9lJ1WPQ9O6A1a/r+LGn6Y705PA6whHQ3T1XuB/PmpfNYf8Fw==
   dependencies:
     babel-plugin-jest-hoist "^25.5.0"
     babel-preset-current-node-syntax "^0.1.2"
@@ -2208,6 +2252,11 @@ blueimp-md5@^2.10.0:
   version "2.18.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/blueimp-md5/-/blueimp-md5-2.18.0.tgz#1152be1335f0c6b3911ed9e36db54f3e6ac52935"
   integrity sha1-EVK+EzXwxrORHtnjbbVPPmrFKTU=
+
+boolbase@^1.0.0, boolbase@~1.0.0:
+  version "1.0.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
+  integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
 bplist-creator@0.0.8:
   version "0.0.8"
@@ -2720,6 +2769,29 @@ css-in-js-utils@^2.0.0:
     hyphenate-style-name "^1.0.2"
     isobject "^3.0.1"
 
+css-select@^2.1.0:
+  version "2.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/css-select/-/css-select-2.1.0.tgz#6a34653356635934a81baca68d0255432105dbef"
+  integrity sha1-ajRlM1ZjWTSoG6ymjQJVQyEF2+8=
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^3.2.1"
+    domutils "^1.7.0"
+    nth-check "^1.0.2"
+
+css-tree@^1.0.0-alpha.39:
+  version "1.1.2"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/css-tree/-/css-tree-1.1.2.tgz#9ae393b5dafd7dae8a622475caec78d3d8fbd7b5"
+  integrity sha1-muOTtdr9fa6KYiR1yux409j717U=
+  dependencies:
+    mdn-data "2.0.14"
+    source-map "^0.6.1"
+
+css-what@^3.2.1:
+  version "3.4.2"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/css-what/-/css-what-3.4.2.tgz#ea7026fcb01777edbde52124e21f327e7ae950e4"
+  integrity sha1-6nAm/LAXd+295SEk4h8yfnrpUOQ=
+
 cssom@^0.4.1:
   version "0.4.4"
   resolved "https://repo.forge.lmig.com/api/npm/npm/cssom/-/cssom-0.4.4.tgz#5a66cf93d2d0b661d80bf6a44fb65f5c2e4e0a10"
@@ -2896,12 +2968,38 @@ diff-sequences@^25.2.6:
   resolved "https://repo.forge.lmig.com/api/npm/npm/diff-sequences/-/diff-sequences-25.2.6.tgz#5f467c00edd35352b7bca46d7927d60e687a76dd"
   integrity sha1-X0Z8AO3TU1K3vKRteSfWDmh6dt0=
 
+dom-serializer@0:
+  version "0.2.2"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/dom-serializer/-/dom-serializer-0.2.2.tgz#1afb81f533717175d478655debc5e332d9f9bb51"
+  integrity sha1-GvuB9TNxcXXUeGVd68XjMtn5u1E=
+  dependencies:
+    domelementtype "^2.0.1"
+    entities "^2.0.0"
+
+domelementtype@1:
+  version "1.3.1"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
+  integrity sha1-0EjESzew0Qp/Kj1f7j9DM9eQSB8=
+
+domelementtype@^2.0.1:
+  version "2.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/domelementtype/-/domelementtype-2.1.0.tgz#a851c080a6d1c3d94344aed151d99f669edf585e"
+  integrity sha1-qFHAgKbRw9lDRK7RUdmfZp7fWF4=
+
 domexception@^1.0.1:
   version "1.0.1"
   resolved "https://repo.forge.lmig.com/api/npm/npm/domexception/-/domexception-1.0.1.tgz#937442644ca6a31261ef36e3ec677fe805582c90"
   integrity sha1-k3RCZEymoxJh7zbj7Gd/6AVYLJA=
   dependencies:
     webidl-conversions "^4.0.2"
+
+domutils@^1.7.0:
+  version "1.7.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
+  integrity sha1-Vuo0HoNOBuZ0ivehyyXaZ+qfjCo=
+  dependencies:
+    dom-serializer "0"
+    domelementtype "1"
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -2949,6 +3047,11 @@ end-of-stream@^1.1.0:
   integrity sha1-WuZKX0UFe682JuwU2gyl5LJDHrA=
   dependencies:
     once "^1.4.0"
+
+entities@^2.0.0:
+  version "2.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
+  integrity sha1-mS0xKc999ocLlsV4WMJJoSD4uLU=
 
 envinfo@^7.7.2:
   version "7.7.3"
@@ -3200,6 +3303,11 @@ expo-font@~8.3.0:
     fbjs "1.0.0"
     fontfaceobserver "^2.1.0"
 
+expo-image-loader@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-1.2.0.tgz#1cf70fc14c45e8595c3d1a2b16f40a53810b4ba4"
+  integrity sha512-cftM8EonIPD4Tjydr5aFpFM1/GsNoIC79YV+ulVR3Zfn3RYcR4whwDcmzFCPuVFEO1Df4oBfEbdXfqlk96DR5Q==
+
 expo-keep-awake@~8.3.0:
   version "8.3.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/expo-keep-awake/-/expo-keep-awake-8.3.0.tgz#11bb8073dfe453259926855c81d9f35db03a79b9"
@@ -3229,6 +3337,13 @@ expo-permissions@~9.3.0:
   resolved "https://repo.forge.lmig.com/api/npm/npm/expo-permissions/-/expo-permissions-9.3.0.tgz#b90c7e9e411d306c1c7ba2bae18d5c53c201affd"
   integrity sha1-uQx+nkEdMGwce6K64Y1cU8IBr/0=
 
+expo-sensors@~9.1.0:
+  version "9.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/expo-sensors/-/expo-sensors-9.1.0.tgz#2320281fc5fbf1d64609a11d2bcdb6d248dbe0ea"
+  integrity sha1-IyAoH8X78dZGCaEdK8220kjb4Oo=
+  dependencies:
+    invariant "^2.2.4"
+
 expo-splash-screen@~0.6.2:
   version "0.6.2"
   resolved "https://repo.forge.lmig.com/api/npm/npm/expo-splash-screen/-/expo-splash-screen-0.6.2.tgz#2be7fc28ad62549e870c69f1fe133ebe756c524f"
@@ -3248,6 +3363,15 @@ expo-status-bar@~1.0.2:
   version "1.0.2"
   resolved "https://repo.forge.lmig.com/api/npm/npm/expo-status-bar/-/expo-status-bar-1.0.2.tgz#2441a77c56be31597898337b0d086981f2adefd8"
   integrity sha1-JEGnfFa+MVl4mDN7DQhpgfKt79g=
+
+expo-updates@~0.3.2:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.3.5.tgz#cd9aafeb5cbe16399df7d39243d00d330d99e674"
+  integrity sha512-O+W0MfDZPhhCYKFtLL85ifd+YAm3rFKALWzmyKOSGBb/L+8CBPQsbbB3mdvji0V2NCqq0+jrBvSCmNa5LRD41w==
+  dependencies:
+    "@expo/metro-config" "^0.1.16"
+    fbemitter "^2.1.1"
+    uuid "^3.4.0"
 
 expo-web-browser@~8.5.0:
   version "8.5.0"
@@ -3527,6 +3651,14 @@ find-up@^4.0.0, find-up@^4.1.0:
   integrity sha1-l6/n1s3AvFkoWEt8jXsW6KmqXRk=
   dependencies:
     locate-path "^5.0.0"
+    path-exists "^4.0.0"
+
+find-up@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
+  integrity sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==
+  dependencies:
+    locate-path "^6.0.0"
     path-exists "^4.0.0"
 
 fontfaceobserver@^2.1.0:
@@ -4292,10 +4424,10 @@ jest-changed-files@^25.5.0:
     execa "^3.2.0"
     throat "^5.0.0"
 
-jest-cli@^25.5.4:
+jest-cli@^25.2.7, jest-cli@^25.5.4:
   version "25.5.4"
-  resolved "https://repo.forge.lmig.com/api/npm/npm/jest-cli/-/jest-cli-25.5.4.tgz#b9f1a84d1301a92c5c217684cb79840831db9f0d"
-  integrity sha1-ufGoTRMBqSxcIXaEy3mECDHbnw0=
+  resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-25.5.4.tgz#b9f1a84d1301a92c5c217684cb79840831db9f0d"
+  integrity sha512-rG8uJkIiOUpnREh1768/N3n27Cm+xPFkSNFO91tgg+8o2rXeVLStz+vkXkGr4UtzH6t1SNbjwoiswd7p4AhHTw==
   dependencies:
     "@jest/core" "^25.5.4"
     "@jest/test-result" "^25.5.0"
@@ -4771,6 +4903,15 @@ jest@^25.2.0:
     import-local "^3.0.2"
     jest-cli "^25.5.4"
 
+jest@~25.2.6:
+  version "25.2.7"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-25.2.7.tgz#3929a5f35cdd496f7756876a206b99a94e1e09ae"
+  integrity sha512-XV1n/CE2McCikl4tfpCY950RytHYvxdo/wvtgmn/qwA8z1s16fuvgFL/KoPrrmkqJTaPMUlLVE58pwiaTX5TdA==
+  dependencies:
+    "@jest/core" "^25.2.7"
+    import-local "^3.0.2"
+    jest-cli "^25.2.7"
+
 jetifier@^1.6.2:
   version "1.6.6"
   resolved "https://repo.forge.lmig.com/api/npm/npm/jetifier/-/jetifier-1.6.6.tgz#fec8bff76121444c12dc38d2dad6767c421dab68"
@@ -5012,6 +5153,13 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+locate-path@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-6.0.0.tgz#55321eb309febbc59c4801d931a72452a681d286"
+  integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
+  dependencies:
+    p-locate "^5.0.0"
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -5022,7 +5170,7 @@ lodash.throttle@^4.1.1:
   resolved "https://repo.forge.lmig.com/api/npm/npm/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
-lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
+lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
   version "4.17.20"
   resolved "https://repo.forge.lmig.com/api/npm/npm/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
@@ -5112,6 +5260,11 @@ md5-file@^3.2.3:
   integrity sha1-+bzrlB7KIhSkwHJ/XnADFOdw8G8=
   dependencies:
     buffer-alloc "^1.1.0"
+
+mdn-data@2.0.14:
+  version "2.0.14"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
+  integrity sha1-cRP8QoGRfWPOKbQ0RvcB5owlulA=
 
 merge-stream@^1.0.1:
   version "1.0.1"
@@ -5550,6 +5703,11 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5715,6 +5873,13 @@ npm-run-path@^4.0.0:
   integrity sha1-t+zR5e1T2o43pV4cImnguX7XSOo=
   dependencies:
     path-key "^3.0.0"
+
+nth-check@^1.0.2:
+  version "1.0.2"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
+  integrity sha1-sr0pXDfj3VijvwcAN2Zjuk2c8Fw=
+  dependencies:
+    boolbase "~1.0.0"
 
 nullthrows@^1.1.0, nullthrows@^1.1.1:
   version "1.1.1"
@@ -5900,6 +6065,13 @@ p-limit@^2.0.0, p-limit@^2.2.0:
   dependencies:
     p-try "^2.0.0"
 
+p-limit@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
+  integrity sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==
+  dependencies:
+    yocto-queue "^0.1.0"
+
 p-locate@^2.0.0:
   version "2.0.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
@@ -5920,6 +6092,13 @@ p-locate@^4.1.0:
   integrity sha1-o0KLtwiLOmApL2aRkni3wpetTwc=
   dependencies:
     p-limit "^2.2.0"
+
+p-locate@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-5.0.0.tgz#83c8315c6785005e3bd021839411c9e110e6d834"
+  integrity sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==
+  dependencies:
+    p-limit "^3.0.2"
 
 p-try@^1.0.0:
   version "1.0.0"
@@ -6004,6 +6183,11 @@ path-parse@^1.0.6:
   resolved "https://repo.forge.lmig.com/api/npm/npm/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha1-1i27VnlAXXLEc37FhgDp3c8G0kw=
 
+paths-js@^0.4.10:
+  version "0.4.11"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/paths-js/-/paths-js-0.4.11.tgz#b2a9d5f94ee9949aa8fee945f78a12abff44599e"
+  integrity sha1-sqnV+U7plJqo/ulF94oSq/9EWZ4=
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -6076,6 +6260,11 @@ pngjs@^5.0.0:
   version "5.0.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/pngjs/-/pngjs-5.0.0.tgz#e79dd2b215767fd9c04561c01236df960bce7fbb"
   integrity sha1-553SshV2f9nARWHAEjbflgvOf7s=
+
+point-in-polygon@^1.0.1:
+  version "1.0.1"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/point-in-polygon/-/point-in-polygon-1.0.1.tgz#d59b64e8fee41c49458aac82b56718c5957b2af7"
+  integrity sha1-1Ztk6P7kHElFiqyCtWcYxZV7Kvc=
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -6245,6 +6434,29 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.8.1, react-is@^16.8.4, react-
   resolved "https://repo.forge.lmig.com/api/npm/npm/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
+react-native-animatable@1.3.3:
+  version "1.3.3"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+  integrity sha1-oTpK+CWOO7FNCp2DmRfpu5J07Io=
+  dependencies:
+    prop-types "^15.7.2"
+
+react-native-chart-kit@^6.8.1:
+  version "6.8.1"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-chart-kit/-/react-native-chart-kit-6.8.1.tgz#8359083337ace5ec83327d6caf39d4297573bd6f"
+  integrity sha1-g1kIMzes5eyDMn1srznUKXVzvW8=
+  dependencies:
+    lodash "^4.17.13"
+    paths-js "^0.4.10"
+    point-in-polygon "^1.0.1"
+
+react-native-expo-fancy-alerts@^2.1.0:
+  version "2.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-expo-fancy-alerts/-/react-native-expo-fancy-alerts-2.1.0.tgz#2b05dd7022eb3080898483825fd4b04f9730c81c"
+  integrity sha1-KwXdcCLrMICJhIOCX9SwT5cwyBw=
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-gesture-handler@~1.7.0:
   version "1.7.0"
   resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-gesture-handler/-/react-native-gesture-handler-1.7.0.tgz#0ef74a5ba836832e497dc49eb1ce58baa6c617e5"
@@ -6255,10 +6467,37 @@ react-native-gesture-handler@~1.7.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-health@^1.2.0:
+  version "1.2.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-health/-/react-native-health-1.2.0.tgz#49f0c2d26b4d619e536dbeae64d754123581baeb"
+  integrity sha1-SfDC0mtNYZ5Tbb6uZNdUEjWBuus=
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha1-IMYD6aDnZf1vlzlmOL3rDlpgsBA=
+
+react-native-leaderboard@^1.0.6:
+  version "1.0.6"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-leaderboard/-/react-native-leaderboard-1.0.6.tgz#2ade5944aa4e5959d86770310139f1e3e5bc0b4b"
+  integrity sha1-Kt5ZRKpOWVnYZ3AxATnx4+W8C0s=
+  dependencies:
+    prop-types "^15.6.0"
+
+react-native-modal@^11.5.6:
+  version "11.5.6"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-modal/-/react-native-modal-11.5.6.tgz#bb25a78c35a5e24f45de060e5f64284397d38a87"
+  integrity sha1-uyWnjDWl4k9F3gYOX2QoQ5fTioc=
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-animatable "1.3.3"
+
+react-native-reanimated@~1.13.0:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.2.tgz#1ae5457b24b4913d173a5a064bb28eae7783d293"
+  integrity sha512-O+WhgxSjOIzcVdAAvx+h2DY331Ek1knKlaq+jsNLpC1fhRy9XTdOObovgob/aF2ve9uJfPEawCx8381g/tUJZQ==
+  dependencies:
+    fbjs "^1.0.0"
 
 react-native-safe-area-context@3.1.4:
   version "3.1.4"
@@ -6269,6 +6508,39 @@ react-native-screens@~2.10.1:
   version "2.10.1"
   resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-screens/-/react-native-screens-2.10.1.tgz#06d22fae87ef0ce51c616c34a199726db1403b95"
   integrity sha1-BtIvrofvDOUcYWw0oZlybbFAO5U=
+
+react-native-svg@12.1.0:
+  version "12.1.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/react-native-svg/-/react-native-svg-12.1.0.tgz#acfe48c35cd5fca3d5fd767abae0560c36cfc03d"
+  integrity sha1-rP5Iw1zV/KPV/XZ6uuBWDDbPwD0=
+  dependencies:
+    css-select "^2.1.0"
+    css-tree "^1.0.0-alpha.39"
+
+react-native-unimodules@~0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.11.0.tgz#78483ee4e7eb27b439d34c3ba7455f40087ff166"
+  integrity sha512-iIxcr9TmgciM/lzOvak+lBkdeGKw74kbMIkr1zxKskhOwLq19kGtYl0/DQm+jcwbsEzTX83SaEPX0C0jqbfb/A==
+  dependencies:
+    "@unimodules/core" "~5.5.0"
+    "@unimodules/react-native-adapter" "~5.6.0"
+    chalk "^2.4.2"
+    expo-asset "~8.2.0"
+    expo-constants "~9.2.0"
+    expo-file-system "~9.2.0"
+    expo-image-loader "~1.2.0"
+    expo-permissions "~9.3.0"
+    unimodules-app-loader "~1.3.0"
+    unimodules-barcode-scanner-interface "~5.3.0"
+    unimodules-camera-interface "~5.3.0"
+    unimodules-constants-interface "~5.3.0"
+    unimodules-face-detector-interface "~5.3.0"
+    unimodules-file-system-interface "~5.3.0"
+    unimodules-font-interface "~5.3.0"
+    unimodules-image-loader-interface "~5.3.0"
+    unimodules-permissions-interface "~5.3.0"
+    unimodules-sensors-interface "~5.3.0"
+    unimodules-task-manager-interface "~5.3.0"
 
 react-native-web@~0.13.12:
   version "0.13.18"
@@ -6285,14 +6557,15 @@ react-native-web@~0.13.12:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
 
-"react-native@https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz":
-  version "0.63.2"
-  resolved "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz#701dd827e27167db70cced8d09bedcc3c2d52897"
+react-native@~0.63.3:
+  version "0.63.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
+  integrity sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw==
   dependencies:
     "@babel/runtime" "^7.0.0"
-    "@react-native-community/cli" "^4.7.0"
-    "@react-native-community/cli-platform-android" "^4.7.0"
-    "@react-native-community/cli-platform-ios" "^4.7.0"
+    "@react-native-community/cli" "^4.10.0"
+    "@react-native-community/cli-platform-android" "^4.10.0"
+    "@react-native-community/cli-platform-ios" "^4.10.0"
     abort-controller "^3.0.0"
     anser "^1.4.9"
     base64-js "^1.1.2"
@@ -6331,6 +6604,16 @@ react-test-renderer@~16.11.0:
     prop-types "^15.6.2"
     react-is "^16.8.6"
     scheduler "^0.17.0"
+
+react-test-renderer@~16.13.1:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.13.1.tgz#de25ea358d9012606de51e012d9742e7f0deabc1"
+  integrity sha512-Sn2VRyOK2YJJldOqoh8Tn/lWQ+ZiKhyZTPtaO0Q6yNj+QDbmRkVFap6pZPy3YQk8DScRDfyqm/KxKYP9gCMRiQ==
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.8.6"
+    scheduler "^0.19.1"
 
 react-timer-mixin@^0.13.4:
   version "0.13.4"
@@ -6595,6 +6878,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://repo.forge.lmig.com/api/npm/npm/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-apple-healthkit@^0.8.0:
+  version "0.8.0"
+  resolved "https://repo.forge.lmig.com/api/npm/npm/rn-apple-healthkit/-/rn-apple-healthkit-0.8.0.tgz#83a23e71fc54d6d929cd6a55d5c590072bab4c64"
+  integrity sha1-g6I+cfxU1tkpzWpV1cWQByurTGQ=
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -7926,3 +8214,8 @@ yargs@^15.1.0, yargs@^15.3.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yocto-queue@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
+  integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==

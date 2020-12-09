@@ -5,6 +5,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import {TabBar} from "./navigation/TabBar";
+import Colors from "./constants/Colors";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -15,8 +17,8 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <TabBar barColor={Colors.light.background}/>
+
       </SafeAreaProvider>
     );
   }

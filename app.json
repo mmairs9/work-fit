@@ -16,16 +16,19 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "**/*",
+      "**/**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mmairs9.workfitexpo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mmairs9.workfitexpo"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

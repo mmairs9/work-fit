@@ -1,0 +1,83 @@
+[
+    {
+      "userId": "1232332323",
+      "userName": "Luke SkyWalker",
+      "duration": 120,
+      "type": "Swimming",
+      "calories": 300,
+      "stepCount": 22,
+      "startDate": "2020-12-07T19:20:30+01:00"
+    },
+    {
+      "userId": '1232332323',
+      "userName": 'Luke SkyWalker',
+      "duration": 120,
+      "type": "Running",
+      "calories": 300,
+      "stepCount": 22,
+      "startDate": "2020-12-07T19:20:30+01:00"
+    },
+    {
+      "userId": '1232332323',
+      "userName": 'Luke SkyWalker',
+      "duration": 120,
+      "type": "Walking",
+      "calories": 300,
+      "stepCount": 22,
+      "startDate": "2020-12-07T19:20:30+01:00"
+    },
+    {
+      "userId": '1232332323',
+      "userName": 'Luke SkyWalker',
+      "duration": 120,
+      "type": "Weights",
+      "calories": 300,
+      "stepCount": 22,
+      "startDate": "2020-12-07T19:20:30+01:00"
+    },
+
+  { "userId": '343423123123',
+    "userName": 'darth Vader',
+        "duration": 120,
+        "type": "Swimming",
+        "calories": 300,
+        "stepCount": 22,
+        "startDate": "2020-12-07T19:20:30+01:00"
+      },
+      {
+        "userId": '343423123123',
+        "userName": 'darth Vader',
+        "duration": 120,
+        "type": "Rowing",
+        "calories": 300,
+        "stepCount": 22,
+        "startDate": "2020-12-07T19:20:30+01:00"
+      },
+      {
+        "userId": '343423123123',
+        "userName": 'darth Vader',
+        "duration": 120,
+        "type": "Running",
+        "calories": 300,
+        "stepCount": 22,
+        "startDate": "2020-12-07T19:20:30+01:00"
+      },
+      {
+        "userId": '343423123123',
+        "userName": 'darth Vader',
+        "duration": 120,
+        "type": "Walking",
+        "calories": 300,
+        "stepCount": 22,
+        "startDate": "2020-12-07T19:20:30+01:00"
+      },
+      {
+        "userId": '343423123123',
+        "userName": 'darth Vader',
+        "duration": 120,
+        "type": "Weights",
+        "calories": 300,
+        "stepCount": 22,
+        "startDate": "2020-12-07T19:20:30+01:00"
+      }
+    ]
