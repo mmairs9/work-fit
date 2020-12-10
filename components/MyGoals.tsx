@@ -27,10 +27,10 @@ export const MyGoals = ({ closeModal }) => {
     const [actionSheet, setActionSheet] = useState();
     const [goals, setGoals] = useState({
         dailyCalories: 0,
-        dailySteps: 0,
+        dailySteps: 10000,
         workoutsPerWeek: 0,
         overAllAthlete: false,
-        activityPro: false,
+        activityPro: true,
         topLeader: false,
         workoutStreaks: false,
     });
@@ -144,7 +144,7 @@ export const MyGoals = ({ closeModal }) => {
                                     <View style={[styles.icon, { borderRadius: 32 }]}>
                                         <Ionicons
                                             name={Platform.select({
-                                                ios: "ios-close",
+                                                ios: "ios-checkmark",
                                                 android: "md-close",
                                             })}
                                             size={36}

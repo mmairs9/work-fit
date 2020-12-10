@@ -24,6 +24,13 @@ export default function LeaderBoardList({navigation}) {
         return unsubscribe;
     }, [navigation]);
 
+    React.useEffect(() => {
+        fetchKeepUpWorkouts(false)
+    }, []);
+
+
+
+
     const data1 = Object.keys(leaderboard).map(key=> {
         return {userName: key === 'gus granbery' ? 'Matt Mairs':key, highScore: leaderboard[key].length, data:leaderboard[key]}
     })
@@ -47,10 +54,9 @@ export default function LeaderBoardList({navigation}) {
         navigation.navigate('UserActivityScreen', {userActivities:item})
     }
 
-    if (!leaderboard) return <Text>Loading Leaderboard</Text>
     return (
         <View styles={styles.container}>
-            {isLoading ? (
+            {isLoading  && !leaderBoardData ? (
                 <View style={styles.activityIndicatorContainer}>
                     <ActivityIndicator size="large" color={Colors.light.tint} />
                 </View>

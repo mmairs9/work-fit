@@ -3,7 +3,7 @@ import {Dimensions, ScrollView, StyleSheet, TouchableOpacity} from 'react-native
 
 import MyDailyActivity from '../components/MyDailyActivity';
 import { Text, View } from '../components/Themed';
-import { groupBy } from 'lodash'
+import { groupBy, sample } from 'lodash'
 import Colors from "../constants/Colors";
 import moment from "moment";
 import {FontAwesome5, Ionicons} from "@expo/vector-icons";
@@ -89,6 +89,7 @@ export default function UserActivityScreen(props) {
                 }}
                 hideLegend={true}
             />
+            <Text style={styles.goal}>Goal {sample(['10,000','15,000', '5000', '1700'])}  Steps</Text>
           </View>
           <Divider style={{marginHorizontal: 50, marginBottom:20, height:2}}/>
           <View>
@@ -187,6 +188,15 @@ const styles = StyleSheet.create({
     color: Colors.light.tertiaryColor,
     fontSize: 20,
     textAlign: "left"
+  },
+
+  goal: {
+    fontSize: 18,
+    marginTop: -20,
+    marginBottom: 20,
+    textAlign: 'center',
+    fontWeight: "bold",
+    color: Colors.light.text,
   },
   header: {
     alignItems: "center",

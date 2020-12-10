@@ -127,7 +127,7 @@ export default function AddActivityScreen() {
                   <TouchableOpacity onPress={toggleAlert}  style={[ styles.icon, { borderRadius: 32, zIndex: 9 } ]}>
                   <View style={[ styles.icon, { borderRadius: 32 } ]}>
                       <Ionicons
-                          name={Platform.select({ ios: 'ios-close', android: 'md-close' })}
+                          name={Platform.select({                     ios: "ios-checkmark", android: 'md-close' })}
                           size={36}
                           color="#FFFFFF"
                       />
