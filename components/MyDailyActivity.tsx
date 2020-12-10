@@ -159,7 +159,7 @@ export default function MyDailyActivity(props) {
   };
 
   const data = {
-    labels: ["Swim", "Bike", "Run"], // optional
+    labels: ["HIIT", "Soccer", "Running"], // optional
     data: [0.4, 0.6, 0.8]
   };
 
@@ -181,7 +181,7 @@ export default function MyDailyActivity(props) {
       </Modal>
       <View style={styles.dailyStepsContainer}>
         <Text style={{position: 'absolute', top: 100, zIndex: 99, color: 'black'}}>Step
-          Count {stepCount + (appleHealtSteps||0)}</Text>
+          Count {parseInt(stepCount + (appleHealtSteps||0))}</Text>
         <FontAwesome5 style={{position: 'absolute', top: 150, zIndex: 99, color: 'black'}} name="running" size={50}
                       color="white"/>
         <ProgressChart

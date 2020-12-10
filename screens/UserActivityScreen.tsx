@@ -3,7 +3,7 @@ import {Dimensions, ScrollView, StyleSheet, TouchableOpacity} from 'react-native
 
 import MyDailyActivity from '../components/MyDailyActivity';
 import { Text, View } from '../components/Themed';
-import { groupBy, sample } from 'lodash'
+import { groupBy, sample, orderBy } from 'lodash'
 import Colors from "../constants/Colors";
 import moment from "moment";
 import {FontAwesome5, Ionicons} from "@expo/vector-icons";
@@ -14,7 +14,7 @@ import {Divider} from "react-native-paper";
 export default function UserActivityScreen(props) {
   console.log(props)
 
-  const workOuts = props.route.params.userActivities.data
+  const workOuts = props.route.params.userActivities.data.map(wo => ({...wo, startDate: moment(wo.startDate)}))
 
   const group = groupBy(workOuts, workout => moment(workout.startDate).startOf('week').format())
   const activityLineChartData =  {
@@ -61,7 +61,7 @@ export default function UserActivityScreen(props) {
             <ProgressChart
                 data={{
                   labels: 'Last Step Count', // optional
-                  data: [workOuts[0].stepCount / 1000]
+                  data: [workOuts[0].stepCount / 10000]
                 }}
                 height={300}
                 width={Dimensions.get("window").width - 30} // from react-native
@@ -150,7 +150,7 @@ export default function UserActivityScreen(props) {
           </View>
 
             <Divider style={{marginHorizontal: 50, marginBottom:20, height:2}}/>
-          <ActivityLog activities={workOuts}/>
+          <ActivityLog activities={orderBy(workOuts, ['startDate'], ['desc'])}/>
           </View>
         </ScrollView>
         </View>
