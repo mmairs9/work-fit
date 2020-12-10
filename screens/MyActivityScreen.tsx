@@ -5,12 +5,13 @@ import MyDailyActivity from '../components/MyDailyActivity';
 import { Text, View } from '../components/Themed';
 import Colors from "../constants/Colors";
 
-export default function MyActivityScreen() {
+export default function MyActivityScreen(props) {
+
   return (
     <View style={styles.container}>
       <ScrollView>
       <Text style={styles.title}>KeepUp</Text>
-      <MyDailyActivity path="/screens/TabOneScreen.js" />
+      <MyDailyActivity {...props} path="/screens/TabOneScreen.js" />
       </ScrollView>
     </View>
   );

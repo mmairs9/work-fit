@@ -9,7 +9,6 @@ import LeaderBoardList from "../components/LeaderBoardList";
 export default function LeaderBoardScreen({navigation}) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>KeepUp</Text>
             <LeaderBoardList navigation={navigation}/>
         </View>
     );
@@ -18,9 +17,9 @@ export default function LeaderBoardScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.light.tint,
+        backgroundColor: Colors.light.background,
         alignItems: 'center',
-        paddingTop: 30,
+        paddingTop: 50,
         marginBottom: 100,
         justifyContent: 'flex-start',
     },

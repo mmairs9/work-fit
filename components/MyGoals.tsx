@@ -7,21 +7,24 @@ import {
     CheckBox,
     Platform,
     ActivityIndicator,
-    Switch, ScrollView,
+    Switch,
+    ScrollView,
+    Picker,
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import addGoals from "../services/addGoals.js";
+import CustomActionSheet from "../components/CustomActionSheet";
 import { FancyAlert } from "react-native-expo-fancy-alerts";
 import { AntDesign, FontAwesome5, Ionicons } from "@expo/vector-icons";
-import { sample } from "lodash";
+import { get, map, sample } from "lodash";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export const MyGoals = ({ closeModal }) => {
     const [visible, setVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [actionSheet, setActionSheet] = useState();
     const [goals, setGoals] = useState({
         dailyCalories: 0,
         dailySteps: 0,
@@ -33,14 +36,30 @@ export const MyGoals = ({ closeModal }) => {
     });
 
     const toggleAlert = React.useCallback(() => {
+        if(visible){
+            closeModal()
+        }
         setVisible(!visible);
     }, [visible]);
 
+    const activites = [
+        "Walking",
+        "Running",
+        "Swimming",
+        "Soccer",
+        "Jumping",
+        "HIIT",
+        "Tennis",
+        "Football",
+        "Baseball",
+    ];
+
     const goalSuccessPhrases = [
-        "Boom goes the dynamite. Another workout in the books.",
-        "I bet you look cute right now, or maybe a little sweaty? Great job getting your workout in today!",
-        "While other sleep, you choose to workout. Good choice.",
-        "Workout logged. Time to fuel up!",
+        "So you want to be the best at EVERYTHING?! Lets do it!",
+        "It takes 10000 hours to excel in something. Lets get started.",
+        "Develop a routine and you are sure to find success! Good luck with your goal.",
+        "Winning comes with a price, there is always a loser!  Better workout now!",
+        "Committment isnt easy, but I know you wont let me down!",
     ];
 
     const onSubmit = async () => {
@@ -50,6 +69,40 @@ export const MyGoals = ({ closeModal }) => {
         toggleAlert();
     };
 
+    const onCancelSheet = () => {
+        if (get(actionSheet, "onCancel")) {
+            actionSheet.onCancel();
+        }
+        onToggleActionSheet();
+    };
+
+    const onToggleActionSheet = (sheet) => {
+        setActionSheet(sheet);
+    };
+
+    const showPicker = () => {
+        onToggleActionSheet({
+            children: renderPicker(),
+            onCancel: () => onToggleActionSheet(),
+        });
+    };
+
+    const renderPicker = () => {
+        return (
+            <Picker
+                selectedValue={goals.activityPro}
+                onValueChange={(value) => {
+                    setGoals({ ...goals, activityPro: value });
+                    onToggleActionSheet();
+                }}
+            >
+                {map(activites, (act) => (
+                    <Picker.Item key={act} label={act} value={act} />
+                ))}
+            </Picker>
+        );
+    };
+
     return (
         <View
             style={[
@@ -57,157 +110,202 @@ export const MyGoals = ({ closeModal }) => {
                 { flex: 1, borderRadius: 20, marginVertical: 10 },
             ]}
         >
-            <TouchableOpacity style={{position:"absolute", top: 10,zIndex:99, right: 0}} onPress={()=>closeModal()}>
-            <AntDesign name="close" size={24}  color="black" />
+            <TouchableOpacity
+                style={{ position: "absolute", top: 10, zIndex: 99, right: 0 }}
+                onPress={() => closeModal()}
+            >
+                <AntDesign name="close" size={24} color="black" />
             </TouchableOpacity>
             <ScrollView>
-            {isLoading ? (
-                <View style={styles.activityIndicatorContainer}>
-                    <ActivityIndicator size="large" color={Colors.light.tint} />
-                </View>
-            ) : (
-                <>
-                    <FancyAlert
-                        visible={visible}
-                        style={styles.alert}
-                        icon={
-                            <TouchableOpacity
-                                onPress={toggleAlert}
-                                style={[styles.icon, { borderRadius: 32, zIndex: 9 }]}
+                {isLoading ? (
+                    <View style={styles.activityIndicatorContainer}>
+                        <ActivityIndicator size="large" color={Colors.light.tint} />
+                    </View>
+                ) : (
+                    <>
+                        {actionSheet && (
+                            <CustomActionSheet
+                                backgroundColor={"transparent"}
+                                modalVisible={!!actionSheet}
+                                onCancel={onCancelSheet}
+                                options={actionSheet.options}
                             >
-                                <View style={[styles.icon, { borderRadius: 32 }]}>
-                                    <Ionicons
-                                        name={Platform.select({
-                                            ios: "ios-close",
-                                            android: "md-close",
-                                        })}
-                                        size={36}
-                                        color="#FFFFFF"
+                                <View style={styles.pickerOverlay}>{actionSheet.children}</View>
+                            </CustomActionSheet>
+                        )}
+                        <FancyAlert
+                            visible={visible}
+                            style={styles.alert}
+                            icon={
+                                <TouchableOpacity
+                                    onPress={toggleAlert}
+                                    style={[styles.icon, { borderRadius: 32, zIndex: 9 }]}
+                                >
+                                    <View style={[styles.icon, { borderRadius: 32 }]}>
+                                        <Ionicons
+                                            name={Platform.select({
+                                                ios: "ios-close",
+                                                android: "md-close",
+                                            })}
+                                            size={36}
+                                            color="#FFFFFF"
+                                        />
+                                    </View>
+                                </TouchableOpacity>
+                            }
+                        >
+                            <View style={styles.content}>
+                                <Text style={styles.alertText}>
+                                    {sample(goalSuccessPhrases)}
+                                </Text>
+                            </View>
+                        </FancyAlert>
+                        {!visible && (
+                            <>
+                                <Text style={styles.heading}>My Goals!</Text>
+                                <Text style={styles.description}>
+                                    Tell us what is driving you to Keep Up!
+                                </Text>
+
+                                <View style={[styles.row, {marginTop: 20}]}>
+                                    <View style={styles.row}>
+                                        <FontAwesome5 name="walking" size={24} color="black" />
+                                        <Text style={[styles.label, { marginLeft: 20 }]}>
+                                            Daily Steps:{" "}
+                                        </Text>
+                                    </View>
+                                    <TextInput
+                                        keyboardType="numeric"
+                                        style={styles.input}
+                                        onChangeText={(text) =>
+                                            setGoals({ ...goals, dailySteps: text })
+                                        }
+                                        value={goals.dailySteps}
                                     />
                                 </View>
-                            </TouchableOpacity>
-                        }
-                    >
-                        <View style={styles.content}>
-                            <Text style={styles.alertText}>{sample(goalSuccessPhrases)}</Text>
-                        </View>
-                    </FancyAlert>
-                    <Text style={styles.heading}>My Goals!</Text>
-                    <Text style={styles.description}>
-                        Tell us what is driving you to Keep Up!
-                    </Text>
 
-                    <View style={styles.row}>
-                        <View style={styles.row}>
-                            <FontAwesome5 name="walking" size={24} color="black" />
-                            <Text style={styles.label}>Daily Steps: </Text>
-                        </View>
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={(text) => setGoals({ ...goals, dailySteps: text })}
-                            value={goals.dailySteps}
-                        />
-                    </View>
+                                <View style={styles.row}>
+                                    <View style={styles.row}>
+                                        <Ionicons name="ios-flame" size={24} color="black" />
+                                        <Text style={[styles.label, { marginLeft: 20 }]}>
+                                            Daily Calories:{" "}
+                                        </Text>
+                                    </View>
+                                    <TextInput
+                                        style={styles.input}
+                                        keyboardType="numeric"
+                                        onChangeText={(text) =>
+                                            setGoals({ ...goals, dailyCalories: text })
+                                        }
+                                        value={goals.dailyCalories}
+                                    />
+                                </View>
 
-                    <View style={styles.row}>
-                        <View style={styles.row}>
-                            <Ionicons name="ios-flame" size={24} color="black" />
-                            <Text style={styles.label}>Daily Calories: </Text>
-                        </View>
-                        <TextInput
-                            style={styles.input}
-                            keyboardType="numeric"
-                            onChangeText={(text) =>
-                                setGoals({ ...goals, dailyCalories: text })
-                            }
-                            value={goals.dailyCalories}
-                        />
-                    </View>
+                                <View style={[styles.row]}>
+                                    <View style={styles.row}>
+                                        <AntDesign name="barschart" size={24} color="black" />
+                                        <Text style={styles.label}>Workouts per week: </Text>
+                                    </View>
+                                    <TextInput
+                                        style={styles.input}
+                                        keyboardType="numeric"
+                                        onChangeText={(text) =>
+                                            setGoals({ ...goals, workoutsPerWeek: text })
+                                        }
+                                        value={goals.workoutsPerWeek}
+                                    />
+                                </View>
 
-                    <View
-                        style={[
-                            styles.row,
-                            {
-                                marginVertical: 15,
-                            },
-                        ]}
-                    >
-                        <View style={styles.row}>
-                            <AntDesign name="barschart" size={24} color="black" />
-                            <Text style={styles.label}>Workouts per week: </Text>
-                        </View>
-                        <TextInput
-                            style={styles.input}
-                            keyboardType="numeric"
-                            onChangeText={(text) =>
-                                setGoals({ ...goals, workoutsPerWeek: text })
-                            }
-                            value={goals.workoutsPerWeek}
-                        />
-                    </View>
+                                <View
+                                    style={[
+                                        styles.row,
+                                        {
+                                            marginVertical: 10,
+                                        },
+                                    ]}
+                                >
+                                    <View style={styles.row}>
+                                        <MaterialIcons
+                                            name="fitness-center"
+                                            size={24}
+                                            color="black"
+                                        />
+                                        <Text style={styles.label}>Top Leader</Text>
+                                    </View>
+                                    <Switch
+                                        trackColor={{ false: "#767577", true: Colors.light.tint }}
+                                        thumbColor={
+                                            goals.topLeader ? Colors.light.tertiaryColor : "#f4f3f4"
+                                        }
+                                        ios_backgroundColor="#3e3e3e"
+                                        onValueChange={(value) =>
+                                            setGoals({ ...goals, topLeader: value })
+                                        }
+                                        value={goals.topLeader}
+                                    />
+                                </View>
+                                <View
+                                    style={[
+                                        styles.row,
+                                        {
+                                            marginVertical: 10,
+                                        },
+                                    ]}
+                                >
+                                    <View style={styles.row}>
+                                        <Entypo name="sound-mix" size={24} color="black" />
+                                        <Text style={styles.label}>Overall Athlete</Text>
+                                    </View>
+                                    <Switch
+                                        trackColor={{ false: "#767577", true: Colors.light.tint }}
+                                        thumbColor={
+                                            goals.overAllAthlete
+                                                ? Colors.light.tertiaryColor
+                                                : "#f4f3f4"
+                                        }
+                                        ios_backgroundColor="#3e3e3e"
+                                        onValueChange={(value) =>
+                                            setGoals({ ...goals, overAllAthlete: value })
+                                        }
+                                        value={goals.overAllAthlete}
+                                    />
+                                </View>
+                                <View
+                                    style={[
+                                        styles.row,
+                                        {
+                                            marginVertical: 10,
+                                        },
+                                    ]}
+                                >
+                                    <View style={styles.row}>
+                                        <FontAwesome5 name="trophy" size={24} color="black" />
+                                        <Text style={styles.label}>Activity Pro</Text>
+                                    </View>
 
-                    <View
-                        style={[
-                            styles.row,
-                            {
-                                marginVertical: 15,
-                            },
-                        ]}
-                    >
-                        <View style={styles.row}>
-                            <Ionicons name="ios-barbell-sharp" size={24} color="black" />
-                            <Text style={styles.label}>Top Leader</Text>
-                        </View>
-                        <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={goals.topLeader ? "#f5dd4b" : "#f4f3f4"}
-                            ios_backgroundColor="#3e3e3e"
-                            onValueChange={(value) =>
-                                setGoals({ ...goals, topLeader: value })
-                            }
-                            value={goals.topLeader}
-                        />
-                    </View>
-                    <View style={styles.row}>
-                        <View style={styles.row}>
-                            <Entypo name="sound-mix" size={24} color="black" />
-                            <Text style={styles.label}>Overall Athlete</Text>
-                        </View>
-                        <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={goals.overAllAthlete ? "#f5dd4b" : "#f4f3f4"}
-                            ios_backgroundColor="#3e3e3e"
-                            onValueChange={(value) =>
-                                setGoals({ ...goals, overAllAthlete: value })
-                            }
-                            value={goals.overAllAthlete}
-                        />
-                    </View>
-                    <View style={styles.row}>
-                        <View style={styles.row}>
-                            <FontAwesome5 name="trophy" size={24} color="black" />
-                            <Text style={styles.label}>Activity Pro</Text>
-                        </View>
-                        <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={goals.activityPro ? "#f5dd4b" : "#f4f3f4"}
-                            ios_backgroundColor="#3e3e3e"
-                            onValueChange={(value) =>
-                                setGoals({ ...goals, activityPro: value })
-                            }
-                            value={goals.activityPro}
-                        />
-                    </View>
-                    <TouchableOpacity
-                        onPress={onSubmit}
-                        style={styles.appButtonContainer}
-                    >
-                        <Text style={styles.appButtonText}>Submit Activity</Text>
-                    </TouchableOpacity>
-                    <Button title="Hide modal" onPress={() => closeModal()} />
-                </>
-            )}
+                                    <TouchableOpacity
+                                        testID="picker"
+                                        onPress={showPicker}
+                                        style={{
+                                            borderBottomWidth: 1,
+                                            borderColor: "#e4e4e4",
+                                            marginTop: 0,
+                                        }}
+                                    >
+                                        <Text style={[styles.input, { paddingTop: 10 }]}>
+                                            {goals.activityPro}
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </>
+                        )}
+                    </>
+                )}
             </ScrollView>
+
+            <TouchableOpacity onPress={onSubmit} style={styles.appButtonContainer}>
+                <Text style={styles.appButtonText}>Save Goals</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -218,7 +316,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.light.background,
-
         marginHorizontal: 20,
         justifyContent: "flex-start",
     },
@@ -238,14 +335,20 @@ const styles = StyleSheet.create({
         color: Colors.light.text,
         marginRight: "auto",
         fontSize: 24,
-        marginVertical: 5,
+        marginTop: 5,
+        marginBottom: 20
     },
     activityIndicatorContainer: {
-        marginTop: 60,
+        marginTop: 250,
     },
     checkboxContainer: {
         flexDirection: "row",
         marginBottom: 20,
+    },
+    pickerOverlay: {
+        backgroundColor: "white",
+        marginBottom: 10,
+        borderRadius: 5,
     },
     checkbox: {
         alignSelf: "center",
@@ -299,11 +402,12 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
     },
     input: {
-        marginVertical: 20,
+        marginVertical: 10,
         height: 44,
         paddingHorizontal: 10,
         borderRadius: 8,
         width: 100,
+        textAlign: "right",
         maxWidth: 400,
         backgroundColor: Colors.light.secondary,
         borderWidth: 1,

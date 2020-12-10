@@ -5,6 +5,7 @@ export default (activity) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "text/plain");
     const startDate = moment()
+
         .utc(true)
         .toISOString()
 

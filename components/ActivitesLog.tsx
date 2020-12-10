@@ -5,7 +5,7 @@ import moment from "moment";
 import {FontAwesome5, Ionicons} from "@expo/vector-icons";
 import React from "react";
 
-export const ActivityLog = ({activities}) => <View style={{backgroundColor: "#F3F6FA"}}>
+export const ActivityLog = ({activities}) => <View style={{backgroundColor: "#F3F6FA", paddingBottom: 80}}>
     <Text style={styles.dailyGoals}>Logged Activities</Text>
     <FlatList
         data={activities}
@@ -16,21 +16,23 @@ export const ActivityLog = ({activities}) => <View style={{backgroundColor: "#F3
                     borderBottomWidth: 1,
                     borderRadius: 10,
                     marginRight: -10,
+                    alignItems: "center",
                     borderBottomColor: '#eaeaea'
                 }]}>
                     <Text style={[styles.item, {
                         color: Colors.light.tint,
-                        marginLeft: 0
-                    }]}>{`${moment(item.startDate).format('D')}/${moment(item.startDate).format('M')} -`}</Text>
+                        marginLeft: 0,
+                        fontSize: 16
+                    }]}>{`${moment(item.startDate).format('D')}/${moment(item.startDate).format('M')}`}</Text>
                     <Text style={[styles.item, {
                         color: Colors.light.text,
                         marginLeft: -15,
-                        fontWeight: 'bold'
-                    }]}>{item.type}</Text>
+                        fontSize: 16
+                    }]}>- {item.type}</Text>
                 </View>
                 <View style={[styles.row, {justifyContent: 'space-between'}]}>
                     <View style={styles.row}>
-                        <Ionicons name="ios-time" size={24} style={[styles.icon, {color: '#999999'}]}/>
+                        <Ionicons name="ios-time" size={24} style={[styles.icon, {color: '#838383'}]}/>
                         <Text style={styles.item}>{item.duration} Mins</Text>
                     </View>
 
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
 
     item: {
         padding: 10,
-        fontSize: 18,
+        fontSize: 14,
 
         height: 44,
     },
